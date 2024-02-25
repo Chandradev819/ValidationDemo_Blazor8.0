@@ -1,0 +1,41 @@
+﻿@page "/"
+@using ValidationDemo.Model
+
+<PageTitle>Emp</PageTitle>
+<h3>Emp Details</h3>
+<EditForm Model="@myModel" OnValidSubmit="@HandleValidSubmit">
+    <ObjectGraphDataAnnotationsValidator />
+@*     <ValidationSummary /> *@
+    <div>
+        <label for="name" class="form-label">Name:</label>
+        <InputText id="name" @bind-Value="myModel.Name" class="form-control" />
+        <ValidationMessage For="@(() => myModel.Name)" />
+    </div>
+    <div>
+        <label for="email" class="form-label">Email:</label>
+        <InputText id="email" @bind-Value="myModel.Email" class="form-control" />
+        <ValidationMessage For="@(() => myModel.Email)" />
+    </div>
+    <div>
+        <label for="Address" class="form-label">Address1:</label>
+        <InputText id="Address" @bind-Value="myModel.Address.Address1" class="form-control" />
+        <ValidationMessage For="@(() => myModel.Address.Address1)" />
+    </div>
+    <div>
+        <label for="Address" class="form-label">Address2:</label>
+        <InputText id="Address" @bind-Value="myModel.Address.Address2" class="form-control" />
+        <ValidationMessage For="@(() => myModel.Address.Address2)" />
+    </div>
+    <div class="form-group">
+        <button class="btn btn-outline-primary mt-2">Submit</button>
+    </div>
+</EditForm>
+
+@code {
+    private Emp myModel = new Emp();
+
+    private void HandleValidSubmit()
+    {
+        // Logic to handle form submission when the form is valid
+    }
+}
