@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using System.Reflection;
+using ValidationDemo.Model.FluentValidation;
 
 namespace ValidationDemo
 {
@@ -13,6 +15,8 @@ namespace ValidationDemo
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
+            // Register Fluent Validation validators
+            builder.Services.AddFluentValidation(Assembly.GetExecutingAssembly());
             await builder.Build().RunAsync();
         }
     }
